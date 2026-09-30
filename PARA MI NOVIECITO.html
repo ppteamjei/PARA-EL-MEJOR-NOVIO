@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Feliz Día del Novio</title>
+    <style>
+        body {
+            background-image: url('a.jpeg');
+            background-repeat: repeat;
+            background-size: 500px;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 20px;
+        }
+
+        @font-face {
+            font-family: 'Seramonde';
+            src: url('Seramonde Trial.otf') format('opentype');
+        }
+
+        h1 {
+            font-family: 'Seramonde', cursive, sans-serif;
+            color: #FF0005;
+            text-align: center;
+            font-size: 40px;
+            text-shadow: 3px 3px 5px #FFFFFF;
+        }
+
+        h2 {
+            font-family: 'Seramonde', sans-serif;
+            color: #FFFFFF;
+            background-color: #FF0005;
+            text-align: center;
+            padding: 10px 15px;
+            border-radius: 10px;
+            width: fit-content;
+            margin: 20px auto;
+        }
+.cuadro-contador {
+            width: 80%;
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border: 2px solid #FF0005;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .numero-dias {
+            font-family: 'Seramonde', sans-serif;
+            font-size: 50px;
+            color: #FF0005;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        .cuadro-escrito {
+            width: 80%;
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 25px;
+            background-color: rgba(255, 240, 242, 0.95);
+            border: 2px solid #FF0005;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            font-family: Arial, sans-serif;
+            color: #333333;
+            font-size: 18px;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        /* ESTILO PARA EL BOTÓN / ENLACE GRANDE */
+        .boton-enlace {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 18px 35px;        /* Aumenta el tamaño interno del botón */
+            font-size: 24px;           /* Letra mucho más grande */
+            font-weight: bold;         /* Texto en negrita */
+            background-color: #FF0005;
+            color: #FFFFFF;
+            text-decoration: none;     /* Quita la línea de subrayado */
+            border-radius: 30px;       /* Bordes muy redondos */
+            box-shadow: 0px 5px 15px rgba(255, 0, 5, 0.4); /* Sombra para resaltar */
+            transition: all 0.3s ease;
+        }
+
+        /* Efecto al pasar el ratón o tocar la pantalla */
+        .boton-enlace:hover {
+            background-color: #D60004;
+            transform: scale(1.08);    /* Crece un poco más al pasar el cursor */
+        }
+.cuadro-collage {
+            width: 85%;
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border: 2px solid #FF0005;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        /* Cuadrícula de fotos */
+        .galeria-grid {
+            display: grid;
+            /* Crea columnas automáticas de mínimo 140px */
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px; /* Espacio entre cada foto */
+            margin-top: 15px;
+        }
+
+        /* Estilo para cada imagen dentro del collage */
+        .galeria-grid img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover; /* Recorta la imagen para que rellene el cuadro sin deformarse */
+            border-radius: 10px;
+            border: 2px solid #FF0005;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Efecto al pasar el cursor sobre una foto */
+        .galeria-grid img:hover {
+            transform: scale(1.08) rotate(2deg); /* Se agranda un poco y se inclina */
+            box-shadow: 0px 6px 12px rgba(255, 0, 5, 0.3);
+            z-index: 2;
+        }
+.cuadro-raspadita {
+            width: 90%;
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border: 2px solid #FF0005;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        /* Contenedor relativo para encimar el canvas sobre el video */
+        .contenedor-video {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            height: 300px;
+            margin: 15px auto 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid #FF0005;
+        }
+
+      .contenedor-video {
+            position: relative;
+            width: 100%;
+            max-width: 320px;     /* Ancho ideal para video vertical */
+            height: 568px;        /* Altura justa para que no se recorte */
+            margin: 15px auto 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid #FF0005;
+            background-color: #000000; /* Fondo negro por si quedan pequeños bordes */
+        }
+
+        /* El video se muestra COMPLETO sin recortar nada */
+        .contenedor-video video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;  /* Muestra todo el video completo sin hacer zoom */
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        
+        }
+
+        /* La capa para raspar (Canvas) encima del video */
+        .contenedor-video canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            cursor: pointer;
+        }
+.boton-reproducir {
+            margin-top: 15px;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #FF0005;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
+        }
+
+        .boton-reproducir:hover {
+            transform: scale(1.05);
+            background-color: #D60004;
+        }
+.cuadro-texto-imagen {
+            width: 85%;
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 25px;
+            background-color: rgba(255, 240, 242, 0.95);
+            border: 2px solid #FF0005;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            
+            display: flex;
+            flex-wrap: wrap;             /* Permite que se acomode en pantallas chicas */
+            align-items: center;         /* Centra verticalmente el texto y la imagen */
+            justify-content: center;
+            gap: 20px;                   /* Espacio entre la imagen y el texto */
+        }
+
+        /* Texto dentro del recuadro */
+        .cuadro-texto-imagen .contenido-texto {
+            flex: 1 1 250px;             /* Se adapta al espacio disponible */
+            font-family: Arial, sans-serif;
+            color: #333333;
+            font-size: 17px;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        /* Imagen dentro del recuadro */
+        .cuadro-texto-imagen img {
+            width: 100%;
+            max-width: 220px;            /* Tamaño de la imagen */
+            height: auto;
+            border-radius: 12px;
+            border: 2px solid #FF0005;
+            box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.15);
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+
+         <h1 style="background-color: #FFC0CB; color: #8B0000; padding: 10px; border-radius: 10px; text-align: center;">Feliz Dia Del Novio Mi Niño De Ojitos Preciosos!!  💞 </h1>
+
+
+
+       <h2 style="background-color: #FFC0CB; color: #8B0000; text-align: center;"> Gracias Por Ser Mi Novio, Te Amo </h2>
+
+
+    <div class="cuadro-escrito">
+       <br> 
+
+Feliz Día del Novio, mi vida. </br>
+
+<br>Hoy quiero recordarte lo mucho que significas para mí, pero no solamente diciéndote que te amo, sino diciéndote lo bonito que es tenerte en mi vida. A veces siento que no me doy cuenta de todo lo que hemos construido hasta que me pongo a pensar en cada momento que hemos compartido, en todas nuestras conversaciones, nuestras risas, nuestros abrazos y hasta en las cosas más simples que hacemos juntos.</br>
+
+
+<br>Me encanta que contigo puedo ser completamente yo. Puedo contarte mis cosas, hacerte parte de mis días, hablarte de cualquier tontería y saber que, de alguna manera, siempre terminas siendo una parte importante de lo que vivo.</br>
+
+
+<br>También amo que nuestra historia no sea perfecta. Hemos tenido momentos difíciles, hemos aprendido, hemos cometido errores y hemos tenido que entendernos muchas veces, pero creo que todo eso también ha hecho que lo nuestro sea más real. No quiero una relación perfecta, quiero una relación en la que los dos sigamos aprendiendo a ser cada vez mejor.</br>
+
+
+<br>Quiero seguir haciendo recuerdos contigo. Quiero que todavía nos queden muchísimas cosas por vivir, lugares por conocer, planes por cumplir, canciones que nos recuerden al otro y momentos que algún día podamos recordar diciendo “¿te acuerdas de cuando…?”.</br>
+
+
+<br>Y sobre todo, quiero que sepas que me hace muy feliz poder compartir esta etapa de mi vida contigo. Me siento muy afortunada de haberte encontrado y de poder llamarte mi novio.</br>
+
+<br> Gracias por amarme, por cuidarme, por hacerme sentir especial y por todas esas pequeñas cosas que haces que quizá para ti parecen normales, pero que para mí significan muchísimo.</br>
+
+<br>Espero que nunca olvides lo importante que eres para mí y lo mucho que te amo. No sé qué nos tenga preparado la vida, pero sí sé que hoy quiero seguir eligiéndote, seguir construyendo contigo y seguir disfrutando de todo lo que nos queda por vivir.</br>
+
+
+<br>Feliz Día del Novio, amor mío.
+
+Te amo muchísimo, más de lo que a veces sé explicar con palabras. ❤️ </br>
+    
+
+
+        <!-- ENLACE GRANDE -->
+        <a href="https://open.spotify.com/intl-es/track/7JholUL3Iv83zpEY8CsuZf?si=065c34a55fbe4c6d" target="_blank" class="boton-enlace">
+            Te la dedico amor ❤️
+        </a>
+
+<div class="cuadro-collage">
+        <h2> MI HOMBRE, MI NIÑO, MI CIELO, MI AMOR, MI FUTURO ESPOSO, MI VIDA, MI TODOO!! </h2>
+        
+        <div class="galeria-grid">
+            <!-- Cambia los nombres de archivo por tus fotos reales -->
+            <img src="foto 1.jpeg" alt="Foto 1">
+            <img src="foto 2.jpeg" alt="Foto 2">
+            <img src="foto 3.jpeg" alt="Foto 3">
+            <img src="foto 9.jpeg" alt="Foto 4">
+            <img src="foto 10.jpeg" alt="Foto 5">
+            <img src="foto 6.jpeg" alt="Foto 6">
+<img src="foto 7.jpeg" alt="Foto 7">
+<img src="foto 11.jpeg" alt="Foto 11">
+<img src="foto 12.jpeg" alt="Foto 12">
+        <img src="foto 14.jpeg" alt="Foto 14">
+        
+    </div>
+<div class="cuadro-contador">
+        <h3 style="margin:0; color:#333;">Faltan solo: 26 dias</h3>
+        <div class="numero-dias" id="contador">26</div>
+        <p style="margin:0; color:#555; font-size:18px;">días para nuestro día especial ❤️</p>
+    </div>
+
+            
+            <!-- Lienzo de encubrimiento --><div class="cuadro-raspadita">
+        <h2>¡Rasca para descubrir tu video! </h2>
+        <p style="font-family: Arial, sans-serif; color: #555; margin-bottom: 10px;">
+            Pasa el cursor o tu dedo sobre el recuadro para revelar la sorpresa:
+        </p>
+
+        <div class="contenedor-video">
+            <video id="miVideo" loop playsinline preload="auto">
+                <source src="paloma.mp4" type="video/mp4">
+                Tu navegador no soporta videos en HTML.
+            </video>
+            
+            <canvas id="capaRaspar"></canvas>
+        </div>
+
+        <!-- Botón externo para Reproducir/Pausar -->
+        <button id="btnPlay" class="boton-reproducir" onclick="alternarVideo()">▶ Reproducir Video</button>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('capaRaspar');
+        const ctx = canvas.getContext('2d');
+        const video = document.getElementById('miVideo');
+        const btnPlay = document.getElementById('btnPlay');
+        let rascando = false;
+
+        function redimensionarCanvas() {
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+            
+            ctx.fillStyle = '#FFC0CB';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = '#FF0005';
+            ctx.font = 'bold 20px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText(' ¡Rasca aquí! ', canvas.width / 2, canvas.height / 2);
+        }
+
+        window.addEventListener('load', redimensionarCanvas);
+
+        function raspar(e) {
+            if (!rascando) return;
+            
+            // Intenta reproducir el video automáticamente al empezar a raspar
+            if (video.paused) {
+                video.play();
+                btnPlay.textContent = '⏸ Pausar Video';
+            }
+
+            const rect = canvas.getBoundingClientRect();
+            let x, y;
+
+            if (e.touches) {
+                x = e.touches[0].clientX - rect.left;
+                y = e.touches[0].clientY - rect.top;
+            } else {
+                x = e.clientX - rect.left;
+                y = e.clientY - rect.top;
+            }
+
+            ctx.globalCompositeOperation = 'destination-out';
+            ctx.beginPath();
+            ctx.arc(x, y, 25, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        // Función para controlar el video mediante el botón
+        function alternarVideo() {
+            if (video.paused) {
+                video.play();
+                btnPlay.textContent = '⏸ Pausar Video';
+            } else {
+                video.pause();
+                btnPlay.textContent = '▶ Reproducir Video';
+            }
+        }
+
+        // Eventos
+        canvas.addEventListener('mousedown', (e) => { rascando = true; raspar(e); });
+        canvas.addEventListener('mousemove', raspar);
+        canvas.addEventListener('mouseup', () => rascando = false);
+
+        canvas.addEventListener('touchstart', (e) => { rascando = true; raspar(e); });
+        canvas.addEventListener('touchmove', raspar);
+        canvas.addEventListener('touchend', () => rascando = false);
+    </script>
+ <!-- ENLACE GRANDE -->
+        <a href="https://open.spotify.com/intl-es/track/7kT3Lrt2RmShYNycbS2ACQ?si=1c6e1fed50814247" target="_blank" class="boton-enlace">
+            También te la dedico mi vida ❤️
+        </a>
+
+
+<div class="cuadro-texto-imagen">
+        <!-- Imagen -->
+        <img src="cat's.jfif" alt="Foto especial">
+<img src="novio.jpeg" alt="Foto especial">
+
+<img src="cute.jfif" alt="Foto especial">
+
+
+       
+        <!-- Texto -->
+        <div class="contenido-texto">
+            <h3 style="margin-top: 0; color: #FF0005; font-family: 'Seramonde', sans-serif; font-size: 24px;"><center>
+                Mi Mayor Felicidad  💓
+            </center></h3>
+            <p>
+               <br>Amor, palabras me faltan para agradecer todo lo que haz hecho por mí, de verdad, eres el mejor novio del mundo, a pesar de que ambos hemos tenido errores, seguimos juntos, seguimos adelante, como la gran pareja que somos. </br> <br> Compartir mi vida contigo sin duda ha sido lo mejor que me ha pasado, nunca creí que alguien llegara a amarme tanto como tú, que afortunada soy de tenerte. </br> 
+<br> Gracias por permitirme ser tu novia y amarte tanto, que sea el primero de muchos regalos digitales que hago, quiero que me acompañes durante este proceso de ser ingeniera en ciberseguridad. </br>
+<br> Nunca olvides lo mucho que te amo, nunca dejaré de amarte, amarte me hace feliz, me hace sentirme llena. Feliz día del novio amor, te amo! </br>
+<br> Quién va a amarte tanto como yo? </br>
+<br> Con muchísimo amor, tu linda novia Jei Romero. </br>
+            </p>
+
+        <center> <img src="nub.jpeg" alt="Foto especial"> </center>
+
+     
+    </div>
+</body>
+</html>
